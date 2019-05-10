@@ -1,0 +1,60 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Write a description of class Turtle here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Turtle extends Animal
+{
+    private int mSpeed = 3;
+    private int mHamburgersEaten = 0;
+
+    /**
+     * Act - do whatever the Turtle wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act() 
+    {
+        // Add your action code here.
+        if (canSee(Snake.class))
+        {
+           Greenfoot.playSound("Wrong-answer.mp3");
+           Greenfoot.stop();
+        }
+        if (canSee(Hamburger.class))
+        {
+            mHamburgersEaten = mHamburgersEaten + 1;
+            if (counterEventTriggered(mSpeed, 3))
+            {
+                
+            }
+            eat(Hamburger.class);
+        }
+        if (Greenfoot.isKeyDown("right"))
+        {
+            setRotation(0);
+            move(mSpeed);
+        }
+        if (Greenfoot.isKeyDown("left"))
+        {
+            setRotation(180);
+            move(mSpeed);
+        }
+        if (Greenfoot.isKeyDown("up"))
+        {
+            setRotation(270);
+            move(mSpeed);
+        }
+        if (Greenfoot.isKeyDown("down"))
+        {
+            setRotation(90);
+            move(mSpeed);
+        }
+        if (isAtEdge())
+        {
+            turn(30);
+        }
+    }    
+}
